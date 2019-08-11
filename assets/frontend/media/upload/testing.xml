@@ -1,0 +1,440 @@
+<people>
+<person id="person0">
+<name>Kasidit Treweek</name>
+<emailaddress>mailto:Treweek@cohera.com</emailaddress>
+<phone>+44 (645) 96317722</phone>
+<homepage>http://www.cohera.com/~Treweek</homepage>
+<creditcard>9941 9701 2489 4716</creditcard>
+<profile income="20186.59">
+<interest category="category251"/>
+<education>Graduate School</education>
+<business>No</business>
+</profile>
+<watches>
+<watch open_auction="open_auction8747"/>
+<watch open_auction="open_auction10177"/>
+<watch open_auction="open_auction7314"/>
+<watch open_auction="open_auction10552"/>
+<watch open_auction="open_auction1403"/>
+<watch open_auction="open_auction5572"/>
+</watches>
+</person>
+<person id="person1">
+<name>Harpreet Mahony</name>
+<emailaddress>mailto:Mahony@nodak.edu</emailaddress>
+<phone>+27 (757) 57722209</phone>
+<address>
+<street>99 Lazaro St</street>
+<city>El</city>
+<country>Svalbard and Jan Mayen Island</country>
+<province>Basler</province>
+<zipcode>27</zipcode>
+</address>
+<homepage>http://www.nodak.edu/~Mahony</homepage>
+<creditcard>8299 8437 7660 4576</creditcard>
+<watches>
+<watch open_auction="open_auction2942"/>
+</watches>
+</person>
+<person id="person2">
+<name>Dannz Heering</name>
+<emailaddress>mailto:Heering@lante.com</emailaddress>
+<address>
+<street>18 Ali St</street>
+<city>Cody</city>
+<country>United States</country>
+<zipcode>15</zipcode>
+</address>
+<homepage>http://www.lante.com/~Heering</homepage>
+<creditcard>3451 4924 5999 9150</creditcard>
+</person>
+<person id="person3">
+<name>Sujit Azevdeo</name>
+<emailaddress>mailto:Azevdeo@co.in</emailaddress>
+<address>
+<street>72 Valtchev St</street>
+<city>Fortaleza</city>
+<country>Belarus</country>
+<zipcode>13</zipcode>
+</address>
+<homepage>http://www.co.in/~Azevdeo</homepage>
+<profile income="39378.64">
+<gender>male</gender>
+<business>Yes</business>
+<age>18</age>
+</profile>
+<watches>
+<watch open_auction="open_auction5593"/>
+<watch open_auction="open_auction9034"/>
+<watch open_auction="open_auction7241"/>
+<watch open_auction="open_auction7274"/>
+<watch open_auction="open_auction5260"/>
+<watch open_auction="open_auction11727"/>
+<watch open_auction="open_auction10897"/>
+<watch open_auction="open_auction3262"/>
+<watch open_auction="open_auction2263"/>
+<watch open_auction="open_auction6578"/>
+<watch open_auction="open_auction10123"/>
+</watches>
+</person>
+<person id="person4">
+<name>Makram Nahapetian</name>
+<emailaddress>mailto:Nahapetian@uni-mb.si</emailaddress>
+<creditcard>9876 6005 5611 9911</creditcard>
+</person>
+<person id="person5">
+<name>Laurian Kang</name>
+<emailaddress>mailto:Kang@nodak.edu</emailaddress>
+<address>
+<street>3 Fontet St</street>
+<city>Panama</city>
+<country>Congo</country>
+<province>Qizhong</province>
+<zipcode>12</zipcode>
+</address>
+<homepage>http://www.nodak.edu/~Kang</homepage>
+<creditcard>7284 3937 3054 2869</creditcard>
+<watches>
+<watch open_auction="open_auction10336"/>
+</watches>
+</person>
+<person id="person6">
+<name>Junji Furudate</name>
+<emailaddress>mailto:Furudate@ou.edu</emailaddress>
+<phone>+58 (341) 47491129</phone>
+<address>
+<street>29 Pirenne St</street>
+<city>Rochester</city>
+<country>United States</country>
+<zipcode>38</zipcode>
+</address>
+<homepage>http://www.ou.edu/~Furudate</homepage>
+</person>
+<person id="person7">
+<name>Mehrdad Herberle</name>
+<emailaddress>mailto:Herberle@edu.au</emailaddress>
+<watches>
+<watch open_auction="open_auction5480"/>
+</watches>
+</person>
+<person id="person8">
+<name>Naomi Kwedlo</name>
+<emailaddress>mailto:Kwedlo@cohera.com</emailaddress>
+<phone>+79 (510) 3545345</phone>
+<homepage>http://www.cohera.com/~Kwedlo</homepage>
+</person>
+<person id="person9">
+<name>Merrick Rapin</name>
+<emailaddress>mailto:Rapin@csufresno.edu</emailaddress>
+<phone>+23 (62) 36866659</phone>
+<address>
+<street>78 Melcarne St</street>
+<city>Mobile</city>
+<country>Paraguay</country>
+<province>Pavani</province>
+<zipcode>26</zipcode>
+</address>
+<profile income="32519.71">
+<interest category="category374"/>
+<education>Other</education>
+<business>No</business>
+<age>18</age>
+</profile>
+</person>
+<person id="person10">
+<name>Duri Allison</name>
+<emailaddress>mailto:Allison@microsoft.com</emailaddress>
+<phone>+76 (769) 13840778</phone>
+<homepage>http://www.microsoft.com/~Allison</homepage>
+<profile income="27628.76">
+<interest category="category209"/>
+<interest category="category341"/>
+<gender>male</gender>
+<business>Yes</business>
+<age>37</age>
+</profile>
+</person>
+<person id="person11">
+<name>Manjit O'Reagan</name>
+<emailaddress>mailto:O'Reagan@ucdavis.edu</emailaddress>
+<creditcard>3964 1037 4785 3648</creditcard>
+<watches>
+<watch open_auction="open_auction10151"/>
+<watch open_auction="open_auction1930"/>
+<watch open_auction="open_auction8325"/>
+</watches>
+</person>
+<person id="person12">
+<name>Kyungsook Schatz</name>
+<emailaddress>mailto:Schatz@sleepycat.com</emailaddress>
+<phone>+57 (495) 51255340</phone>
+<address>
+<street>52 Port St</street>
+<city>Leon</city>
+<country>United States</country>
+<province>Hawaii</province>
+<zipcode>8</zipcode>
+</address>
+<homepage>http://www.sleepycat.com/~Schatz</homepage>
+<creditcard>7975 8113 3579 6983</creditcard>
+<watches>
+<watch open_auction="open_auction7974"/>
+<watch open_auction="open_auction315"/>
+<watch open_auction="open_auction11945"/>
+</watches>
+</person>
+<person id="person13">
+<name>Jent Rodiger</name>
+<emailaddress>mailto:Rodiger@uqam.ca</emailaddress>
+<phone>+73 (650) 72499956</phone>
+<homepage>http://www.uqam.ca/~Rodiger</homepage>
+<creditcard>7366 1702 9623 9871</creditcard>
+<profile income="48525.65">
+<interest category="category173"/>
+<interest category="category47"/>
+<interest category="category620"/>
+<interest category="category679"/>
+<business>No</business>
+<age>29</age>
+</profile>
+</person>
+<person id="person14">
+<name>LouAnn Mulvany</name>
+<emailaddress>mailto:Mulvany@ucla.edu</emailaddress>
+<phone>+82 (159) 89097976</phone>
+<address>
+<street>13 Whitt St</street>
+<city>Barcelona</city>
+<country>United States</country>
+<zipcode>22</zipcode>
+</address>
+<homepage>http://www.ucla.edu/~Mulvany</homepage>
+<creditcard>6788 3544 7141 9026</creditcard>
+<profile income="30851.34">
+<interest category="category521"/>
+<interest category="category314"/>
+<interest category="category126"/>
+<education>Graduate School</education>
+<business>Yes</business>
+<age>18</age>
+</profile>
+</person>
+<person id="person15">
+<name>Saeeiab Skogmar</name>
+<emailaddress>mailto:Skogmar@labs.com</emailaddress>
+<homepage>http://www.labs.com/~Skogmar</homepage>
+<watches>
+<watch open_auction="open_auction11560"/>
+<watch open_auction="open_auction1142"/>
+<watch open_auction="open_auction1669"/>
+<watch open_auction="open_auction3608"/>
+<watch open_auction="open_auction1421"/>
+<watch open_auction="open_auction11012"/>
+<watch open_auction="open_auction1215"/>
+<watch open_auction="open_auction1953"/>
+</watches>
+</person>
+<person id="person16">
+<name>Swaroop Schieder</name>
+<emailaddress>mailto:Schieder@uregina.ca</emailaddress>
+<watches>
+</watches>
+</person>
+<person id="person17">
+<name>Yasuharu Broll</name>
+<emailaddress>mailto:Broll@arizona.edu</emailaddress>
+<phone>+4 (700) 44636792</phone>
+<creditcard>3221 3161 8924 9561</creditcard>
+</person>
+<person id="person18">
+<name>Keumog Gellerich</name>
+<emailaddress>mailto:Gellerich@ab.ca</emailaddress>
+<phone>+17 (761) 79845175</phone>
+<address>
+<street>43 Gove St</street>
+<city>Geneva</city>
+<country>Kenya</country>
+<zipcode>10</zipcode>
+</address>
+<profile income="46814.17">
+<interest category="category354"/>
+<interest category="category939"/>
+<interest category="category687"/>
+<interest category="category658"/>
+<interest category="category576"/>
+<interest category="category494"/>
+<interest category="category815"/>
+<gender>female</gender>
+<business>Yes</business>
+</profile>
+</person>
+<person id="person19">
+<name>Rattasit Brookman</name>
+<emailaddress>mailto:Brookman@edu.sg</emailaddress>
+<phone>+60 (801) 48326098</phone>
+<address>
+<street>3 Heiman St</street>
+<city>Calgary</city>
+<country>United States</country>
+<province>Michigan</province>
+<zipcode>9</zipcode>
+</address>
+<creditcard>8108 2667 4487 4098</creditcard>
+<profile income="9876.00">
+<interest category="category505"/>
+<interest category="category625"/>
+<education>Other</education>
+<business>Yes</business>
+<age>41</age>
+</profile>
+<watches>
+<watch open_auction="open_auction3358"/>
+<watch open_auction="open_auction3008"/>
+<watch open_auction="open_auction6495"/>
+</watches>
+</person>
+<person id="person20">
+<name>Gift Polupanov</name>
+<emailaddress>mailto:Polupanov@rutgers.edu</emailaddress>
+<phone>+22 (495) 60376454</phone>
+<address>
+<street>80 Mishkin St</street>
+<city>Houston</city>
+<country>United States</country>
+<province>Kansas</province>
+<zipcode>18</zipcode>
+</address>
+<homepage>http://www.rutgers.edu/~Polupanov</homepage>
+<creditcard>5486 5894 8985 5941</creditcard>
+<watches>
+<watch open_auction="open_auction5216"/>
+</watches>
+</person>
+<person id="person21">
+<name>Eleanna Loulergue</name>
+<emailaddress>mailto:Loulergue@imag.fr</emailaddress>
+<phone>+56 (683) 61705191</phone>
+<profile income="52198.57">
+<interest category="category24"/>
+<interest category="category200"/>
+<interest category="category436"/>
+<education>College</education>
+<gender>female</gender>
+<business>No</business>
+</profile>
+</person>
+<person id="person22">
+<name>Gerardine Mandell</name>
+<emailaddress>mailto:Mandell@yorku.ca</emailaddress>
+<address>
+<street>36 Whitlock St</street>
+<city>Butte</city>
+<country>United States</country>
+<zipcode>6</zipcode>
+</address>
+</person>
+<person id="person23">
+<name>Taokuan Oksanen</name>
+<emailaddress>mailto:Oksanen@ucsb.edu</emailaddress>
+<watches>
+<watch open_auction="open_auction11749"/>
+<watch open_auction="open_auction8367"/>
+<watch open_auction="open_auction4601"/>
+</watches>
+</person>
+<person id="person24">
+<name>Krisda Tyugu</name>
+<emailaddress>mailto:Tyugu@att.com</emailaddress>
+<phone>+52 (885) 40835060</phone>
+<address>
+<street>7 Grunberger St</street>
+<city>Rome</city>
+<country>United States</country>
+<zipcode>29</zipcode>
+</address>
+<creditcard>2291 8615 9117 2434</creditcard>
+<watches>
+<watch open_auction="open_auction10969"/>
+<watch open_auction="open_auction1515"/>
+<watch open_auction="open_auction3175"/>
+<watch open_auction="open_auction7428"/>
+</watches>
+</person>
+<person id="person25">
+<name>Kendra Kumaresan</name>
+<emailaddress>mailto:Kumaresan@llnl.gov</emailaddress>
+<address>
+<street>85 Metze St</street>
+<city>Berlin</city>
+<country>Christmas Island</country>
+<province>Rustenburg</province>
+<zipcode>4</zipcode>
+</address>
+<homepage>http://www.llnl.gov/~Kumaresan</homepage>
+<creditcard>3525 1127 3070 9580</creditcard>
+<profile income="31807.75">
+<interest category="category698"/>
+<education>Graduate School</education>
+<business>No</business>
+</profile>
+</person>
+<person id="person26">
+<name>Reva Aseltine</name>
+<emailaddress>mailto:Aseltine@mit.edu</emailaddress>
+</person>
+<person id="person27">
+<name>Giansalvatore Eilertsen</name>
+<emailaddress>mailto:Eilertsen@dec.com</emailaddress>
+<address>
+<street>57 Krupka St</street>
+<city>Rio</city>
+<country>United States</country>
+<zipcode>34</zipcode>
+</address>
+<creditcard>2894 1350 2851 7050</creditcard>
+<profile income="10954.34">
+<business>Yes</business>
+</profile>
+<watches>
+<watch open_auction="open_auction7425"/>
+<watch open_auction="open_auction4716"/>
+</watches>
+</person>
+<person id="person28">
+<name>Gaochao Spirkovska</name>
+<emailaddress>mailto:Spirkovska@clustra.com</emailaddress>
+<homepage>http://www.clustra.com/~Spirkovska</homepage>
+<creditcard>1697 9359 1025 9208</creditcard>
+<profile income="47654.15">
+<business>No</business>
+</profile>
+<watches>
+<watch open_auction="open_auction7822"/>
+<watch open_auction="open_auction6206"/>
+<watch open_auction="open_auction6890"/>
+<watch open_auction="open_auction4546"/>
+<watch open_auction="open_auction7418"/>
+<watch open_auction="open_auction4143"/>
+<watch open_auction="open_auction9742"/>
+</watches>
+</person>
+<person id="person29">
+<name>Naftali Thimonier</name>
+<emailaddress>mailto:Thimonier@pi.it</emailaddress>
+<phone>+34 (654) 2342236</phone>
+<address>
+<street>54 Starovic St</street>
+<city>Milan</city>
+<country>United States</country>
+<zipcode>7</zipcode>
+</address>
+<homepage>http://www.pi.it/~Thimonier</homepage>
+<profile income="9876.00">
+<business>No</business>
+</profile>
+<watches>
+<watch open_auction="open_auction6494"/>
+<watch open_auction="open_auction6339"/>
+</watches>
+</person>
+</people>
