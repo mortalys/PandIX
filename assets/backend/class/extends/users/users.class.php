@@ -447,7 +447,7 @@ class users {
 			Boolean
 		*/		
 
-		$this->__errorLog.=("<br>\n add(init)");	
+		$this->__errorLog.=("<br>\n create(init)");	
 		
 		#region « Variables Validation »
 				
@@ -515,7 +515,7 @@ class users {
         
 		
 		if (!$resultQuery->execute($SQLQueryData)) {
-			$this->__errorLog.=sprintf("->(error in query to get list of HD Wallets)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));				
+			$this->__errorLog.=sprintf("->(error in adding user to database)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));				
 			return false;
 		}			
 
@@ -545,7 +545,7 @@ class users {
 			Boolean
 		*/		
 		
-		$this->__errorLog.=("<br>\n edit(init)");			
+		$this->__errorLog.=("<br>\n update(init)");			
 		
 		#region « Variables Validation »
 			$SQLCondition="";
