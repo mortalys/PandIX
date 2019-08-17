@@ -499,20 +499,20 @@ class users {
 				
 		#endregion « Variables Validation »				
 		
+		$SQLQueryData = [
+			":username" => $username,
+			":email" => $email,
+			":password" => $password,
+			":status" => $status,
+			":registrationCode" => $registrationCode,
+			":time" => time()
+		];
 
-        $SQLQuery=sprintf("INSERT INTO `users` (`idUser`, `username`, `email`, `password`, `status`, `registrationCode`, `registrationDate`)
-                     VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-                     $username,
-                     $email,
-                     $password,
-                     $status,
-                     $registrationCode,
-                     time());
-
+        $SQLQuery="INSERT INTO `users` (`idUser`, `username`, `email`, `password`, `status`, `registrationCode`, `registrationDate`)
+                     VALUES (NULL, :username, :email, :password, :status, '%s', '%s', '%s')";
 
 		#echo $this->_AUX->PDODebugger($SQLQuery,$SQLQueryData);die();														
-        $resultQuery = $this->_PDO->prepare($SQLQuery);        
-        
+        $resultQuery = $this->_PDO->prepare($SQLQuery);                
 		
 		if (!$resultQuery->execute($SQLQueryData)) {
 			$this->__errorLog.=sprintf("->(error in adding user to database)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));				
