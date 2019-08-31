@@ -47,25 +47,23 @@
 class usersController {
 
 	//core API
-	private $_apiInit;		
-	
 	private $_devMode;
-	private $_appData;		
+	private $_appData;			
 	
-	private $_AUX;
 	private $_REQUEST;
 	private $_OUTPUT;
 	
 	//idUser - current user requesting operations
 	private $_idUser;	
 	
-	//Domains
+	#Domains - DI High Level Modules
 	private $_USERS;	
 	
-	//External Libraries
+	#External Libraries - DI Low Level Modules
+	private $_AUX;
 
-
-	public function __construct($data=array()) {
+	public function __construct($data=array()) 
+	{
 		$this->_devMode = $data["devMode"];	
 		
 		$this->_AUX = $data["aux"];
@@ -76,18 +74,20 @@ class usersController {
 		$this->_USERS= $data['users'];		
 		
 		$this->_appData = $data["appData"];
-		
-		$this->_apiInit = (object) array(
-					"RESPONSE" => 1,
-					"ERROR" => 'No errors',
-					"__errorLog" => "",
-					"data" => array()
-				);		
-		
 	}			
 
 	#region « CORE API Functions »
 	
+	private static function apiInit($data=array()) 
+	{		
+		return (object) array(
+					"RESPONSE" => 1,
+					"ERROR" => 'No errors',
+					"__errorLog" => "",
+					"data" => array()
+				);				 	
+	}	
+
 
 	public function apiError($data=array()) {
 		
@@ -119,7 +119,7 @@ class usersController {
 	public function addNew($data = array()) 
 	{
 		//set API Response
-		$API=$this->_apiInit;
+		$API=$this->apiInit();
 		
 		
 		//data sent - do validations : begin
@@ -401,7 +401,7 @@ class usersController {
 	public function passwordReset($data = array()) 
 	{
 		//Set API Response 
-		$API=$this->_apiInit;		
+		$API=$this->apiInit();		
 		
 		#validate logged user
 		
@@ -436,7 +436,7 @@ class usersController {
 	public function passwordUpdate($data = array()) 
 	{
 		//Set API Response 
-		$API=$this->_apiInit;
+		$API=$this->apiInit();
 		
 		
 		
@@ -466,7 +466,7 @@ class usersController {
 	public function usersLogin($data=array()) 
 	{						
 		//set API Response
-		$API=$this->_apiInit;
+		$API=$this->apiInit();
 		
 		#standardization variables names : begin
 		$userData=array();

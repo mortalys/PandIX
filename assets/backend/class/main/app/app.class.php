@@ -98,8 +98,6 @@ class app  {
     public $__errorLog; # USED to PARSE & DISPLAY ERRORS
     
     public $__ROOT; # dirname(__FILE__)
-	
-	public $_SESSION; # SESSION Handler
     
     #EXTERNAL OBJECTS
     public $_AUX;
@@ -118,7 +116,7 @@ class app  {
         $this->__errorLog="";        
 
         $this->_AUX=$data['aux'];
-        $this->_SESSION=$data['session'];
+
         $this->__ROOT=$data['root'];        
     }
     

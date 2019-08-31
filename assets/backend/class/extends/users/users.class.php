@@ -314,7 +314,7 @@ class users {
 		}
 			
 		//UPDATE SESSION VARS
-		$_SESSION = [
+		$_SESSION += [
 				'loginAtempt' => 0,
 				'loginSession' =>sprintf("%s_%s",
 									  $idUser,
@@ -413,7 +413,7 @@ class users {
 		
 		#setup session
 		
-		$_SESSION = [
+		$_SESSION += [
 				'loginAtempt' => 0,
 				'loginSession' =>sprintf("%s_%s",
 									  $this->_userData['idUser'],
@@ -677,6 +677,74 @@ class users {
     }
 
 	#endregion « CRUD OPERATIONS »    
+
+	/*
+
+	TO DO 	
+	
+	*/
+    public function status($data) 
+	{
+		
+		/*
+		check for user credentials			
+		
+		 requires:
+			idUser : Integer
+			status : Integer
+
+			
+		 returns:
+			Boolean
+		*/		
+
+		$this->__errorLog.=("<br>\n status(init)");	
+		
+		#region : Variables Validation 
+			
+			#idUser : Integer
+				$idUser=isset($data["idUser"])?$data['idUser']:0;        
+
+				#required 
+				if (!is_numeric($idUser)
+					|| $idUser==0) {
+					$this->__errorLog.=sprintf("->(error in idUser: %s)", $idUser);
+					return false; 						
+				}
+				
+			#status : Integer
+				$status=isset($data["status"])?$data['status']:0;        
+
+				#required 
+				if (!is_numeric($status)) {
+					$this->__errorLog.=sprintf("->(error in status: %s)", $status);
+					return false; 						
+				}				
+
+		#endregion : Variables Validation
+		
+		$SQLQueryData[":idUser"]=$idUser;
+        $SQL="SELECT * FROM `users` 
+				WHERE `idUser`=:idUser
+				AND `status`=:status"; 
+				
+        $result = $this->_PDO->prepare($SQL);
+		
+		if (!$result->execute($SQLQueryData))
+		{
+			$this->__errorLog.=sprintf("->(error in query to get user status)[ %s ]",
+							$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));							
+			return false;
+		}
+		
+		if ($result->rowCount()==0) {
+			$this->__errorLog.=sprintf("(No user found in selected status)[ %s ]",$status);
+			return false;		
+		}
+		
+		return true;
+		
+	}
 
 
     public function checkPassword($data)

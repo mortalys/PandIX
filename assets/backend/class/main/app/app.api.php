@@ -9,8 +9,7 @@ require_once ROOT.'/assets/backend/class/main/common/common.api.php';
     #app main settings
     $pandixInitData= [
                "aux" => new auxFunctions(),
-               "root" => ROOT,
-               "session" => $_SESSION
+               "root" => ROOT
                ];        
 	
     $pandix=new app($pandixInitData);    
@@ -37,11 +36,15 @@ require_once ROOT.'/assets/backend/class/main/common/common.api.php';
 			Required to handle API request permissions - Routing
 			Can bypass when no there is not users limitations
 		*/
+		
+		#User Variable can be override by admin
+		$_idUser = is_numeric($_SESSION['_idUser'])?$_SESSION['_idUser']:0;
+		
 		$usersInitData= [
 						   "db" => $pandix->_DBCON,
 						   "dbTables" => $pandix->_appData["DB"]["TABLES"]["users"],	
 						   "aux" => new auxFunctions(),
-						   "idUser" => ($pandix->_SESSION['_idUser']>0?$pandix->_SESSION['_idUser']:0), #ADD ID USER GLOBAL
+						   "idUser" => $_idUser, #ADD ID USER GLOBAL
 						   "userRoute" => $userRoute
 						];
 		
