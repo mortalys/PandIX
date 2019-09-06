@@ -35,7 +35,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `username`, `email`, `password`, `status`, `registrationCode`, `registrationDate`) VALUES
-(1, 1, 'admin', 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 2, 0, 1496179477);
+(1, 'admin', 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 2, 0, 1496179477);
 
 --
 -- Indexes for dumped tables
