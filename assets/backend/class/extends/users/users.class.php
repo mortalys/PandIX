@@ -203,6 +203,7 @@ class users {
 
 		#region « Variables Validation »
 			$SQLCondition="";
+			$SQLQueryData=[];
 			
 			$SQLConditionCheck=function($str) {
 				return $str==""?"WHERE":"AND";
@@ -260,11 +261,15 @@ class users {
 							$SQLCondition);                		
 						
 		
+		$SQLParsed = count($SQLQueryData)>0?$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData): $SQLQuery;
+		
+		#echo $SQLParsed;die();
+		
 		$resultQuery = $this->_PDO->prepare($SQLQuery);	
 		
 		#try get data from database
 		if (!$resultQuery->execute($SQLQueryData)) {
-			$this->__errorLog.=sprintf("->(error in query to get user details)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));
+			$this->__errorLog.=sprintf("->(error in query to get user details)[ %s ]",$SQLParsed);
 			return false;
 		}	
 		
@@ -345,7 +350,7 @@ class users {
 		
 		#region « Variables Validation »
 			$SQLCondition="";
-			
+			$SQLQueryData=[];
 			$SQLConditionCheck=function($str) {
 				return $str==""?"WHERE":"AND";
 			};				
@@ -391,14 +396,16 @@ class users {
 					`password` = :password
 					AND
 					`status` = %s",
-					$this->_status->active);                     
+					$this->_status->active);
 		
-		#echo $this->_AUX->PDODebugger($SQLQuery,$SQLQueryData);														
-		$resultQuery = $this->_PDO->prepare($SQLQuery);			
+		$SQLParsed = count($SQLQueryData)>0?$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData): $SQLQuery;
 		
+		#echo $SQLParsed;die();				
+		
+		$resultQuery = $this->_PDO->prepare($SQLQuery);					
 		
 		if (!$resultQuery->execute($SQLQueryData)) {
-			$this->__errorLog.=sprintf("->(Error Login Query)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));				
+			$this->__errorLog.=sprintf("->(Error Login Query)[ %s ]",$SQLParsed);				
 			return false;
 		}					
        
@@ -449,8 +456,7 @@ class users {
 
 		$this->__errorLog.=("<br>\n create(init)");	
 		
-		#region « Variables Validation »
-				
+		#region « Variables Validation »			
 				
 			#username : String
 				$username=isset($data["username"])?$data["username"]:"";        
@@ -511,11 +517,14 @@ class users {
         $SQLQuery="INSERT INTO `users` (`idUser`, `username`, `email`, `password`, `status`, `registrationCode`, `registrationDate`)
                      VALUES (NULL, :username, :email, :password, :status, '%s', '%s', '%s')";
 
-		#echo $this->_AUX->PDODebugger($SQLQuery,$SQLQueryData);die();														
+		$SQLParsed = count($SQLQueryData)>0?$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData): $SQLQuery;
+		
+		#echo $SQLParsed;die();		
+		
         $resultQuery = $this->_PDO->prepare($SQLQuery);                
 		
 		if (!$resultQuery->execute($SQLQueryData)) {
-			$this->__errorLog.=sprintf("->(error in adding user to database)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));				
+			$this->__errorLog.=sprintf("->(error in adding user to database)[ %s ]",$SQLParsed);				
 			return false;
 		}			
 
@@ -549,7 +558,7 @@ class users {
 		
 		#region « Variables Validation »
 			$SQLCondition="";
-			
+			$SQLQueryData=[];
 			$SQLConditionCheck=function($str) {
 				return $str==""?"SET":",";
 			};		
@@ -620,11 +629,14 @@ class users {
                        $SQLCondition,
                        $idUser);
 					   
-		#echo $this->_AUX->PDODebugger($SQLQuery,$SQLQueryData)."<br><br>"; die();
+		$SQLParsed = count($SQLQueryData)>0?$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData): $SQLQuery;
+		
+		#echo $SQLParsed;die();		
+		
 		$resultQuery = $this->_PDO->prepare($SQLQuery);						   
        
 		if (!$resultQuery->execute($SQLQueryData)) {
-			$this->__errorLog.=sprintf("->(error in editing user)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));
+			$this->__errorLog.=sprintf("->(error in editing user)[ %s ]",$SQLParsed);
 			return false;
 		}
 
@@ -632,7 +644,7 @@ class users {
 
     }
 	
-	#old remove()
+	#old remove() Refactor
 	public function delete($data = array()) 
 	{
 		/*
@@ -665,11 +677,14 @@ class users {
                      `idUser`=%s",
                      $idUser);
 					   
-		#echo $this->_AUX->PDODebugger($SQLQuery,$SQLQueryData)."<br><br>"; die();
+		$SQLParsed = count($SQLQueryData)>0?$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData): $SQLQuery;
+		
+		#echo $SQLParsed;die();		
+		
 		$resultQuery = $this->_PDO->prepare($SQLQuery);						   
        
 		if (!$resultQuery->execute($SQLQueryData)) {
-			$this->__errorLog.=sprintf("->(error in removing user)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));
+			$this->__errorLog.=sprintf("->(error in removing user)[ %s ]",$SQLParsed);
 			return false;
 		}		
 
@@ -701,6 +716,7 @@ class users {
 		$this->__errorLog.=("<br>\n status(init)");	
 		
 		#region : Variables Validation 
+			$SQLQueryData=[];
 			
 			#idUser : Integer
 				$idUser=isset($data["idUser"])?$data['idUser']:0;        
@@ -712,28 +728,34 @@ class users {
 					return false; 						
 				}
 				
+				$SQLQueryData[":idUser"]=$idUser;
+				
 			#status : Integer
 				$status=isset($data["status"])?$data['status']:0;        
 
 				#required 
 				if (!is_numeric($status)) {
 					$this->__errorLog.=sprintf("->(error in status: %s)", $status);
-					return false; 						
+					return false; 										
 				}				
+				
+				$SQLQueryData[":status"]=$status;
 
 		#endregion : Variables Validation
 		
-		$SQLQueryData[":idUser"]=$idUser;
         $SQL="SELECT * FROM `users` 
 				WHERE `idUser`=:idUser
 				AND `status`=:status"; 
+				
+		$SQLParsed = count($SQLQueryData)>0?$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData): $SQLQuery;
+		
+		#echo $SQLParsed;die();						
 				
         $result = $this->_PDO->prepare($SQL);
 		
 		if (!$result->execute($SQLQueryData))
 		{
-			$this->__errorLog.=sprintf("->(error in query to get user status)[ %s ]",
-							$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));							
+			$this->__errorLog.=sprintf("->(error in query to get user status)[ %s ]",$SQLParsed);							
 			return false;
 		}
 		
@@ -765,7 +787,7 @@ class users {
 		
 		#region « Variables Validation »
 			$SQLCondition="";
-			
+			$SQLQueryData=[];
 			$SQLConditionCheck=function($str) {
 				return $str==""?"WHERE":"AND";
 			};		
@@ -803,11 +825,13 @@ class users {
         $SQLQuery=sprintf("SELECT * FROM `users` %s",
 							$SQLCondition);
 					   
-		#echo $this->_AUX->PDODebugger($SQLQuery,$SQLQueryData)."<br><br>"; die();
+		$SQLParsed = count($SQLQueryData)>0?$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData): $SQLQuery;
+		
+		#echo $SQLParsed;die();		
 		$resultQuery = $this->_PDO->prepare($SQLQuery);						   
        
 		if (!$resultQuery->execute($SQLQueryData)) {
-			$this->__errorLog.=sprintf("->(error in Query)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));
+			$this->__errorLog.=sprintf("->(error in Query)[ %s ]",$SQLParsed);
 			return false;
 		}
 
@@ -838,7 +862,7 @@ class users {
 	
 		#region « Variables Validation »
 			$SQLCondition="";
-			
+			$SQLQueryData=[];
 			$SQLConditionCheck=function($str) {
 				return $str==""?"WHERE":"OR";
 			};			
@@ -877,11 +901,13 @@ class users {
         $SQLQuery=sprintf("SELECT * FROM `users` %s",
 							$SQLCondition);
 					   
-		#echo $this->_AUX->PDODebugger($SQLQuery,$SQLQueryData)."<br><br>"; die();
+		$SQLParsed = count($SQLQueryData)>0?$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData): $SQLQuery;
+		
+		#echo $SQLParsed;die();		
 		$resultQuery = $this->_PDO->prepare($SQLQuery);						   
        
 		if (!$resultQuery->execute($SQLQueryData)) {
-			$this->__errorLog.=sprintf("->(error in Query)[ %s ]",$this->_AUX->PDODebugger($SQLQuery,$SQLQueryData));
+			$this->__errorLog.=sprintf("->(error in Query)[ %s ]",$SQLParsed);
 			return false;
 		}	
        
