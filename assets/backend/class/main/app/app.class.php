@@ -7,13 +7,16 @@
  *      Website:    https://www.linkedin.com/in/cesargrancho/
  *
  *      File:       app.class.php
- *      Version:    2.0.0
+ *      Version:    2.0.1
  *                  
  *      License:    GPL
  *
  *******************************************************************************
  *  VERSION HISTORY:
  ******************************************************************************* 
+ *      v2.0.1 [25.09.2020] 
+ *		- updated routing for defaults views
+ * 
  *      v2 [13.07.2018] 
  *		- updated main structure file directory
  *		- re-factoring
@@ -259,6 +262,11 @@ class app  {
 		if (!file_exists($requiredFile)) {
 			#show default view
 			$requiredFile = $defaultViewFile;
+
+			#required for HTML file includes
+			$fullPath=sprintf("%s/%s",
+								$defaultDir,
+								$this->_appData['PATHING']['FRONTEND']['DEFAULTS']['DOMAIN']); 					
 		}      
 		
         require $requiredFile;

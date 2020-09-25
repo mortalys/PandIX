@@ -70,8 +70,7 @@ class users {
 	
 	public $_userRoute;   
 	
-	private $_status;		
-	
+	protected $_status;
 	
 	public $__errorLog; // USED to PARSE & DISPLAY ERRORS
 
@@ -103,9 +102,9 @@ class users {
 
     #PUBLIC FUNCTION : begin
 	
-
+	# maybe move to app.api ?
 	public function permissionsCheck($data = array()) 
-	{						
+	{					
 	/*
 	Array with conditional routes allowed by registered and non registered users	
 	Requires:
@@ -114,6 +113,44 @@ class users {
 	Returns:	
 		userRoute:String	
 	*/		
+	
+		function permissionsUserGet()
+		{
+			/*
+			Array with conditional routes allowed by registered and non registered users	
+			
+			 returns:	 		
+					array	
+			*/				
+			
+			return [
+					[
+					"domain" => "users",
+					"redirects" => "admin.do.login", #default route when allowed
+					"action" => [
+						"default" => "admin.do.error", #send user here when not allowed
+						"allow" => ["login","register","usersLogin"]
+						]
+					],
+					[
+					"domain" => "admin",
+					"redirects" => "admin.view.dashboard", #default route when allowed
+					"action" => [
+						"default" => "admin.view.login", #send user here when not allowed
+						"allow" => []
+						]
+					],
+					[
+					"domain" => "installer",
+					"redirects" => "installer.view.home", #default route when allowed
+					"action" => [
+						"default" => "installer.view.home", #send user here when not allowed
+						"allow" => []
+						]
+					]				
+				]; 
+		}
+			
 		
 		if (!($this->_AUX->stringValidation($data["userRoute"]))) return false;				
 		
@@ -133,7 +170,7 @@ class users {
 		$action=$this->_AUX->stringValidation($cRoute[2])?$cRoute[2]:"";			
 
 		#check user permissions and update "userRoute" command		
-		$permissions=$this->permissionsUserGet();		
+		$permissions=permissionsUserGet();		
 		
 		#find Index for domain		
 		$key = array_search($domain, array_column($permissions, 'domain'));	
@@ -889,46 +926,7 @@ class users {
     }
 
     #region « PRIVATE »
-    	
-	private function permissionsUserGet() 
-	{
-	/*
-	Array with conditional routes allowed by registered and non registered users	
-	
-	 returns:	 		
-			array	
-	*/	
-	
-	
-		return [
-					[
-					"domain" => "users",
-					"redirects" => "admin.do.login", #default route when allowed
-					"action" => [
-						"default" => "admin.do.error", #send user here when not allowed
-						"allow" => ["login","register","usersLogin"]
-						]
-					],
-					[
-					"domain" => "admin",
-					"redirects" => "admin.view.dashboard", #default route when allowed
-					"action" => [
-						"default" => "admin.view.login", #send user here when not allowed
-						"allow" => []
-						]
-					],
-					[
-					"domain" => "installer",
-					"redirects" => "installer.view.home", #default route when allowed
-					"action" => [
-						"default" => "installer.view.home", #send user here when not allowed
-						"allow" => []
-						]
-					]				
-				]; 	
-		
-	}
-		
+    		
 	private function dbTableCheck($data = array()) 
 	{
 		
