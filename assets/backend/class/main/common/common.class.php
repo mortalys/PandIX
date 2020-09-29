@@ -7,7 +7,7 @@
  *      Website:    https://www.linkedin.com/in/cesargrancho/
  *
  *      File:       auxFunctions.class.php
- *      Version:    1.0.8
+ *      Version:    1.0.9
  *
  *      License:    GPL
  *                  
@@ -15,6 +15,8 @@
  *******************************************************************************
  *  VERSION HISTORY:
  *******************************************************************************
+ *      v1.0.9 [23.09.2020] - Latest Revision - added (isURL)
+ *
  *      v1.0.8 [23.05.2019] - Latest Revision
  *
  *      v1.0.0 [6.9.2017] - Initial Version
@@ -227,7 +229,11 @@ class auxFunctions  {
 		$dtT = new \DateTime("@$seconds");
 		return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
 	}
-	
+    
+    static public function isURL($url) {
+        return filter_var($url, FILTER_VALIDATE_URL);
+    }    
+
     static public function PDODebugger($raw_sql, $parameters)
     {
 		

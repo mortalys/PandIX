@@ -15,6 +15,8 @@
  *******************************************************************************
  *  VERSION HISTORY:
  *******************************************************************************
+ *      v1.0.1 [23.05.2019] 
+ *		- Added System Data to controller
  *      
  *      v1.0.0 [23.05.2019] 
  *		- Users Controller created
@@ -47,8 +49,9 @@
 class usersController {
 
 	//core API
-	private $_devMode;
-	private $_appData;			
+	private $_systemData;
+	private $_appData;	
+	private $_devMode;			
 	
 	private $_REQUEST;
 	private $_OUTPUT;
@@ -64,6 +67,10 @@ class usersController {
 
 	public function __construct($data=array()) 
 	{
+		$this->_systemData = $data["systemData"];
+		$this->_appData = $data["appData"];		
+		$this->_devMode = $this->_systemData["devMode"];
+
 		$this->_devMode = $data["devMode"];	
 		
 		$this->_AUX = $data["aux"];
@@ -72,8 +79,6 @@ class usersController {
 					
 		
 		$this->_USERS= $data['users'];		
-		
-		$this->_appData = $data["appData"];
 	}			
 
 	#region « CORE API Functions »

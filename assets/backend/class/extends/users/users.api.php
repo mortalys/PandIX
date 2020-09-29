@@ -4,7 +4,7 @@
 $_idUser=$this->_USERS->_idUser;
 
 $apiData=[
-	"devMode" => $this->_systemData['devMode'],
+	"systemData" => $this->_systemData,
 	"appData" => $this->_appData,		
 	"aux" => new auxFunctions(),
 	"output" => "json",

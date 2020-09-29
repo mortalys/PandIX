@@ -14,7 +14,9 @@
  *******************************************************************************
  *  VERSION HISTORY:
  ******************************************************************************* 
- *      v2.0.1 [25.09.2020] 
+ *      v2.0.1 [29.09.2020] 
+ * 		- minor tweaks
+ *		- added base URL to systemData - removed from appData
  *		- updated routing for defaults views
  * 
  *      v2 [13.07.2018] 
@@ -172,8 +174,7 @@ class app  {
 		return true;		
 	}
     public function routing($routeData = "") 
-	{
-        
+	{        
         #echo $routeData;
         $c=explode('.',$routeData);
 
@@ -266,7 +267,7 @@ class app  {
 			#required for HTML file includes
 			$fullPath=sprintf("%s/%s",
 								$defaultDir,
-								$this->_appData['PATHING']['FRONTEND']['DEFAULTS']['DOMAIN']); 					
+								$this->_appData['PATHING']['FRONTEND']['DEFAULTS']['DOMAIN']); 			
 		}      
 		
         require $requiredFile;
@@ -319,45 +320,29 @@ class app  {
 			$settings=$this->_globalSettings["system"];
 			
 			#dev mode : begin 
-			if ($settings['devMode']) {
-				ini_set('display_errors', 1);
-				ini_set('display_startup_errors', 1);
-
-				error_reporting(E_ALL & ~E_NOTICE ^ E_DEPRECATED);				
-			}
-			else 
-			{
-				ini_set('display_errors', 0);
-				ini_set('display_startup_errors', 0);
-
-				error_reporting(0);
+			if (!$this->setDevMode($settings['devMode'])) {
+				$this->__errorLog.= sprintf("Error in devMode type: %s .", $appType);
+				return false;
 			}
 			
-			#dev mode : end
-			
-			#memory Limits : begin
+			#memory Limits
 			$appMemory=$settings['memory'];
 			if (is_numeric($appMemory)
 				&& $appMemory>0) {
 				ini_set('memory_limit',$appMemory);
 			}                
-			#memory Limits : end
 			
-			#timeout Limits : begin
+			#timeout Limits 
 			$appTimeout=$settings['timeout'];
 			if (is_numeric($appTimeout)
 				&& $appTimeout>0) {                    
 				ini_set('max_execution_time', $appTimeout);
 			}                
-			#timeout Limits : end    
-			
 			
 			$appType=$settings["base"]["type"];				
 			#check if app type is valid
 			if (!$this->_AUX->stringValidation($appType)) {
-				$this->__errorLog.= sprintf("Error in system type: %s .",
-											$appType
-											);
+				$this->__errorLog.= sprintf("Error in system type: %s .", $appType);
 				return false;
 			}
 			
@@ -367,21 +352,25 @@ class app  {
 			case "HTTP":
 				#session init
 				if (!$this->sessionInit($settings['session'])) {
+					$this->__errorLog.= sprintf("Error in session init: %s .", $settings['session']);					
 					return false;
 				}; 
 				
 				#headers init
 				if (!$this->headersInit($settings['headers'])) {
+					$this->__errorLog.= sprintf("Error in headers init: %s .", $settings['headers']);					
 					return false;
 				};
 				
 				#timezone init
 				if (!$this->timezoneInit($settings['timezone'])) {
+					$this->__errorLog.= sprintf("Error in headers init: %s .", $settings['timezone']);					
 					return false;    
 				}
 				
 				#http url init
-				if (!$this->httpURLInit($settings["BASE"]["URL"])) {
+				if (null == ($settings["base"]["URL"]=$this->httpURLInit($settings["base"]["URL"]))) {
+					$this->__errorLog.= sprintf("Error in httpURLInit init: %s .", $settings["base"]["URL"]);					
 					return false;    
 				}	
 			
@@ -405,7 +394,51 @@ class app  {
 		
 	}
 	
-	#region « WWW SYSTEM »
+	#region « SYSTEM »		
+
+		#Development Mode
+		private function setDevMode($devMode = false) {
+			
+			try {                    
+				if ($devMode) {
+					ini_set('display_errors', 1);
+					ini_set('display_startup_errors', 1);
+	
+					error_reporting(E_ALL & ~E_NOTICE ^ E_DEPRECATED);				
+				}
+				else 
+				{
+					ini_set('display_errors', 0);
+					ini_set('display_startup_errors', 0);
+	
+					error_reporting(0);
+				}	
+			
+			} catch (Exception $e) {
+					$this->__errorLog = sprintf("Expection Found: %s",
+												$e->getMessage()
+											);
+					return false;
+			}   
+			
+			return true;
+		} 		
+
+		#timezone
+		private function timezoneInit($timeZone = "") {
+			
+			try {                    
+				date_default_timezone_set($timeZone);
+			
+			} catch (Exception $e) {
+					$this->__errorLog = sprintf("Expection Found: %s",
+												$e->getMessage()
+											);
+					return false;
+			}                
+
+			return true;
+		} 		
 	
 		#session: begin
 			private function sessionInit($sessionData = array()) {
@@ -518,24 +551,7 @@ class app  {
 				}
 				
 			}
-		#headers : end
-		
-		#timezone : begin
-			private function timezoneInit($timeZone = "") {
-				
-				try {                    
-					date_default_timezone_set($timeZone);
-					
-					return true;
-				
-				} catch (Exception $e) {
-					 $this->__errorLog = sprintf("Expection Found: %s",
-												 $e->getMessage()
-												);
-					 return false;
-				}                
-			}  
-		#timezone : end
+		#headers : end 
 
 		#region « url »
 			private function httpURLInit($data = array()) {
@@ -543,18 +559,18 @@ class app  {
 				try {                    
 					#Define Base URL for current HOST
 					
-					if ($data["BASE"]["URL"]=="null")
+					if (!isset($data["base"]["URL"]))
 					{						
 						$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 						$BASE_URL = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$uri_parts[0]";						
 						
-						if (!($this->_globalSettings["app"]["BASE"]["URL"] = $BASE_URL))
+						if (null == $BASE_URL)
 						{
 							$this->__errorLog = sprintf("No base URL defined: %s",
 														$BASE_URL
 														);					
 							return false;
-						}
+						}						
 					}	
 				
 				} catch (Exception $e) {
@@ -564,10 +580,10 @@ class app  {
 					 return false;
 				}   
 
-				return true;				
+				return $BASE_URL;				
 			} 		
 		#endregion
-	#endregion « WWW SYSTEM »
+	#endregion « SYSTEM »
     
     #endregion « system functions »
     

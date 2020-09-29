@@ -1,5 +1,5 @@
-var baseURL = "/pandix/";
-var API = baseURL+"index.php?";
+var baseURL = location.href.substring(0, location.href.lastIndexOf("/")+1);
+var API = baseURL+"?";
 
 if (typeof jQuery === "undefined") {
     throw new Error("jQuery plugins need to be before this file");

@@ -23,8 +23,7 @@ var Login = function () {
                 
                     $('#loginForm_btn').html("Loading...");
                   },                            
-                success: function(r) {
-					console.log(r);
+                success: function(r) {					
                         if (r.RESPONSE=="25") {
                             
                             $.notify("Invalid login...", "warn");
@@ -37,7 +36,7 @@ var Login = function () {
                             
                             $('#loginForm_btn').html("Logging...");
                             
-                            $(this).delay(1500).queue(function() {location.reload();});                         
+                            $(this).delay(1500).queue(function() {location.href='?c=admin.view.home'});                         
                         }
                                 
                     return false;   								  
