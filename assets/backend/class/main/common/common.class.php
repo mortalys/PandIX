@@ -15,8 +15,10 @@
  *******************************************************************************
  *  VERSION HISTORY:
  *******************************************************************************
- *      v1.0.9 [23.09.2020] - Latest Revision - added (isURL)
+ *      v1.1.0 [23.09.2020] - Latest Revision - added (isURL)
  *
+ *      v1.0.9 [27.09.2019] - Updated Crypt functions
+ * 
  *      v1.0.8 [23.05.2019] - Latest Revision
  *
  *      v1.0.0 [6.9.2017] - Initial Version
@@ -202,18 +204,21 @@ class auxFunctions  {
 		$string=$data["string"];
 		$password=$data["password"];		
 		$mode=$data["mode"]; #1,2...	
+		$secret_iv="randomly";
 		
 		switch($mode) {
 			default:
 			$mode="AES-256-CFB";
 		}		
 		
-		return openssl_encrypt($string,$mode,$password);		
+		return openssl_encrypt($string,$mode,$password,0,substr(hash('sha256', $secret_iv), 0, 16));		
 	}
 	
 	public function decryptString($data=array()) {
 		$string=$data["string"];
-		$password=$data["password"];		
+		$password=$data["password"];
+
+		$secret_iv="randomly";
 		$mode=$data["mode"]; #1,2...	
 		
 		switch($mode) {
@@ -221,7 +226,7 @@ class auxFunctions  {
 			$mode="AES-256-CFB";
 		}			
 		
-		return openssl_decrypt($string,$mode,$password);	
+		return openssl_decrypt($string,$mode,$password,0,substr(hash('sha256', $secret_iv), 0, 16));	
 	}	
 	
 	public function secondsToTime($seconds) {
