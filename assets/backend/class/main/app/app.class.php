@@ -14,6 +14,9 @@
  *******************************************************************************
  *  VERSION HISTORY:
  ******************************************************************************* 
+ *      v2.0.2 [10.08.2021] 
+ * 		- Support for framework error handling output
+ *
  *      v2.0.1 [29.09.2020] 
  * 		- minor tweaks
  *		- added base URL to systemData - removed from appData
@@ -274,8 +277,24 @@ class app  {
                
     }
 
+	public function errorOutput(object $data)
+	{
+
+		$APIResponse=[
+			"ERROR" => "Application Error - contact support",
+			"__errorLog" => $data->message,
+			"RESPONSE" => "25"
+		];
+		switch ($this->_globalSettings['output']) 
+		{			
+			default:
+			#json
+			return json_encode($APIResponse);
+		}
+	}
+		
     ###########################
-    # PUBLIC FUNCTIONS : BEGIN
+    # PUBLIC FUNCTIONS : END
     ###########################    
     
     ###########################

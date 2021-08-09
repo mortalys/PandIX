@@ -199,35 +199,7 @@ class auxFunctions  {
             }
         }
         return '';    
-    }    
-	public function encryptString($data=array()) {
-		$string=$data["string"];
-		$password=$data["password"];		
-		$mode=$data["mode"]; #1,2...	
-		$secret_iv="randomly";
-		
-		switch($mode) {
-			default:
-			$mode="AES-256-CFB";
-		}		
-		
-		return openssl_encrypt($string,$mode,$password,0,substr(hash('sha256', $secret_iv), 0, 16));		
-	}
-	
-	public function decryptString($data=array()) {
-		$string=$data["string"];
-		$password=$data["password"];
-
-		$secret_iv="randomly";
-		$mode=$data["mode"]; #1,2...	
-		
-		switch($mode) {
-			default:
-			$mode="AES-256-CFB";
-		}			
-		
-		return openssl_decrypt($string,$mode,$password,0,substr(hash('sha256', $secret_iv), 0, 16));	
-	}	
+    }
 	
 	public function secondsToTime($seconds) {
 		$dtF = new \DateTime('@0');
